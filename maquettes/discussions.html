@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Discussions - MusiCovoit</title>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+<div class="bg-white border-b dark:bg-gray-700 dark:border-gray-600 py-6">
+    <img class="max-h-16 w-auto ml-auto mr-auto" src="https://media.discordapp.net/attachments/485070483260440581/1108085006984818718/musicovoit_closecropped.png" alt="Logo de Musi'Covoit">
+</div>
+
+<nav class="mx-36 mt-8 flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+            <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-500">
+                <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                Accueil
+            </a>
+        </li>
+        <li aria-current="page">
+            <div class="flex items-center">
+                <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">Discussions</span>
+            </div>
+        </li>
+    </ol>
+</nav>
+
+<div id="feed" class="grid grid-cols-3 gap-6 mx-36 mb-8">
+    <div>
+        <h2 class="mt-12 mb-8 font-medium text-2xl text-pink-600">Dernières discussions</h2>
+        <div class="w-full max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+           <div class="flow-root">
+                <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700 cursor-pointer">
+                    <li class="py-3 sm:py-4 px-8 bg-gray-50 dark:bg-gray-700 rounded-t-lg">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                                    <span class="font-medium text-gray-600 dark:text-gray-300">NM</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="flex text-sm font-medium text-gray-900 truncate dark:text-white">
+                                    Cédric, Erwann, Marie
+                                </p>
+                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                    Nantes → Montaigu
+                                </p>
+                            </div>
+                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                20:49
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-3 sm:py-4 px-8 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                                    <span class="font-medium text-gray-600 dark:text-gray-300">NP</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="flex text-sm font-medium text-gray-900 truncate dark:text-white">
+                                    Charles
+                                </p>
+                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                    Nantes → Pornic
+                                </p>
+                            </div>
+                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                18:41
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-3 sm:py-4 px-8 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                                    <span class="font-medium text-gray-600 dark:text-gray-300">NB</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="flex text-sm font-medium text-gray-900 truncate dark:text-white">
+                                    Nicolas, Ambre
+                                </p>
+                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                    Saint Nazaire → Saint Brieuc
+                                </p>
+                            </div>
+                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                Hier
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-3 sm:py-4 px-8 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                                    <span class="font-medium text-gray-600 dark:text-gray-300">LG</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="flex text-sm font-medium text-gray-900 truncate dark:text-white">
+                                    Lily, Charlotte, Théo, Maxime
+                                </p>
+                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                    Lyon → Genève
+                                </p>
+                            </div>
+                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                10 mai
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-3 sm:py-4 px-8 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-b-lg">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                                    <span class="font-medium text-gray-600 dark:text-gray-300">AN</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="flex text-sm font-medium text-gray-900 truncate dark:text-white">
+                                    Thomas, Pierre, Tim
+                                </p>
+                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                    Albi → Nages
+                                </p>
+                            </div>
+                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                2 avr.
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+           </div>
+        </div>
+    </div>
+    <div class="col-span-2 flex flex-col-reverse h-fit overflow-hidden">
+        <div class="flex flex-col my-2"><!-- Bulle -->
+            <div class="block p-4 bg-white rounded-t-lg rounded-br-lg shadow dark:bg-gray-800 w-fit">
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400 mb-1">Marie - 20:49</p>
+                <p class="font-normal text-gray-700 dark:text-gray-400">Bonjour, est-il possible de décaler légèrement l'heure de passage ?<br/>5 minutes feront l'affaire, merci d'avance.</p>
+            </div>
+            <svg class="w-3 h-3 text-white dark:text-gray-800" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M18 0 L9 12 q -9.49 15 -9 3 L0 0" />
+            </svg>
+        </div>
+        
+        <div class="flex flex-col my-2">
+            <div class="block p-4 bg-white rounded-t-lg rounded-br-lg shadow dark:bg-gray-800 w-fit">
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400 mb-1">Cédric - 20:12</p>
+                <p class="font-normal text-gray-700 dark:text-gray-400">Pas de quoi !<br/>A demain.</p>
+            </div>
+            <svg class="w-3 h-3 text-white dark:text-gray-800" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M18 0 L9 12 q -9.49 15 -9 3 L0 0" />
+            </svg>
+        </div>
+
+        <div class="flex flex-col place-self-end place-items-end my-2">
+            <div class="block p-4 bg-pink-200 rounded-t-lg rounded-bl-lg shadow dark:bg-pink-900 w-fit">
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400 mb-1">Vous - 19:47</p>
+                <p class="font-normal text-gray-700 dark:text-gray-400">Merci d'avoir accepté ma demande. A demain</p>
+            </div>
+            <svg class="w-3 h-3 text-pink-200 dark:text-pink-900" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 0 L15 12 q 9.49 15 9 -3 L24 0" />
+            </svg>
+        </div>
+    </div>
+</div>
+<div class="h-36 invisible"></div>
+
+<div class="fixed bottom-32 w-full">
+    <div class="grid grid-cols-3 mx-36">
+        <form class="col-start-2 col-end-4 flex items-center">
+            <label for="message-content" class="sr-only">Contenu du message</label>
+            <div class="w-full">
+                <input type="text" id="message-content" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500" placeholder="Ecrivez ici votre message" required>
+            </div>
+            <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-pink-700 rounded-lg border border-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                </svg>
+                <span class="sr-only">Envoyer le message</span>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="fixed bottom-0 left-0 z-50 w-full h-20 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+    <div class="grid h-full max-w-xl grid-cols-6 mx-auto font-medium">
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Accueil</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-pink-600 dark:text-pink-500 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+            </svg>
+            <span class="text-sm text-pink-600 dark:text-pink-500 group-hover:text-pink-600 dark:group-hover:text-pink-500">Discussions</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Réservations</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Offres</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Musique</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Profil</span>
+        </button>
+    </div>
+</div>
+</body>
+</html>

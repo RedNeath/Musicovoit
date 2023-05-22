@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Tours → Vannes - MusiCovoit</title>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+<div class="bg-white border-b dark:bg-gray-700 dark:border-gray-600 py-6">
+    <img class="max-h-16 w-auto ml-auto mr-auto" src="https://media.discordapp.net/attachments/485070483260440581/1108085006984818718/musicovoit_closecropped.png" alt="Logo de Musi'Covoit">
+</div>
+
+<nav class="mx-36 mt-8 flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+            <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-500">
+                <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                Accueil
+            </a>
+        </li>
+        <li aria-current="page">
+            <div class="flex items-center">
+                <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">Tours → Vannes</span>
+            </div>
+        </li>
+    </ol>
+</nav>
+
+<div id="feed" class="mx-36 mb-8">
+    <h2 class="mt-12 font-medium text-2xl text-pink-600">Trajets de Tours à Vannes, le 19 mai 2023</h2>
+    <p class="font-normal text-gray-700 dark:text-gray-400">(10 résultats)</p>
+
+    <div class="mt-14 grid grid-cols-2 gap-6">
+        <!-- Filtres -->
+        <div>
+            <div id="sort">
+                <h3 class="font-medium text-xl text-gray-900 dark:text-white">Ordre de tri</h3>
+
+                <fieldset class="pt-2 px-6 my-4">
+                    <legend class="sr-only">Ordres</legend>
+
+                    <div class="flex items-center mb-4">
+                        <input id="sort-option-1" type="radio" name="sort" value="time-up" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-600 dark:focus:bg-pink-600 dark:bg-gray-700 dark:border-gray-600 rounded-lg" checked>
+                        <label for="sort-option-1" class="flex flex-row items-center ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Heure croissante (du plus tôt au plus tard)
+                        </label>
+                    </div>
+
+                    <div class="flex items-center mb-4">
+                        <input id="sort-option-2" type="radio" name="sort" value="time-down" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-600 dark:focus:bg-pink-600 dark:bg-gray-700 dark:border-gray-600 rounded-lg">
+                        <label for="sort-option-2" class="flex flex-row items-center ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Heure décroissante (du plus tard au plus tôt)
+                        </label>
+                    </div>
+
+                    <div class="flex items-center mb-4">
+                        <input id="sort-option-3" type="radio" name="sort" value="price-up" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-600 dark:focus:bg-pink-600 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="sort-option-3" class="flex flex-row items-center ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 100 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Prix croissant (du moins cher au plus cher)
+                        </label>
+                    </div>
+
+                    <div class="flex items-center mb-4">
+                        <input id="sort-option-4" type="radio" name="sort" value="price-down" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-600 dark:focus:bg-pink-600 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="sort-option-4" class="flex flex-row items-center ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 100 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Prix décroissant (du plus cher au moins cher)
+                        </label>
+                    </div>
+
+                    <div class="flex items-center mb-4">
+                        <input id="sort-option-5" type="radio" name="sort" value="distance-up" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-600 dark:focus:bg-pink-600 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="sort-option-5" class="flex flex-row items-center ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.411-2.353a2.25 2.25 0 00.286-.76m11.928 9.869A9 9 0 008.965 3.525m11.928 9.868A9 9 0 118.965 3.525" />
+                            </svg>
+                            Temps de trajet (du plus court au plus long)
+                        </label>
+                    </div>
+                </fieldset>
+
+            </div>
+            <div id="time-filter">
+                <h3 class="font-medium text-xl text-gray-900 dark:text-white">Horaires du voyage</h3>
+
+                <form method="get" action="" class="flex flex-wrap items-center">
+                    <div class="w-full flex flex-row items-center mt-4 mb-2">
+                        <span class="ml-4 mr-2 text-sm font-medium text-gray-900 dark:text-gray-300">Partir après</span>
+                        <input name="from" type="number" class="w-24 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
+                               placeholder="6"
+                        >
+                        <span class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">h</span>
+                    </div>
+                    <div class="w-full flex flex-row items-center mt-2 mb-4">
+                        <span class="ml-4 mr-2 text-sm font-medium text-gray-900 dark:text-gray-300">Arriver avant</span>
+                        <input name="to" type="number" class="w-24 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
+                               placeholder="18"
+                        >
+                        <span class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">h</span>
+                    </div>
+                    <!--div style="margin-left: 0.75rem">
+                        <input type="submit" value="Rechercher"
+                               class="inline-flex items-center px-3 py-2 h-10 text-sm font-medium text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
+                               style="padding: 0.5rem 0.75rem 0.5rem 0.75rem"
+                        >
+                    </div-->
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">03:40</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Nantes</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">04:20</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Montaigu</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">5,00 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Cédric</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">4,3</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-blue-800">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Volkswagen Golf</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">06:50</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Tours</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">11:00</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Vannes</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">16,00 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Samuel</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">4,8</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-gray-600">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Peugeot 3008</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">13:40</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Nantes</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">14:00</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Rezé</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">3,50 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Robert</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">3,9</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-gray-600">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Volvo S60</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">18:15</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Le Havre</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">22:30</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Rennes</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">12,00 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Anne</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">4,9</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-green-400">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Opel Mokka</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">16:00</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Lorient</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">16:50</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Quimper</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">8,00 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Sarah</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">4,4</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-gray-300">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Peugeot 3008</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">12:00</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Paris</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">18:30</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Bordeaux</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">20,00 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Christophe</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">4,0</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-amber-900">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Cupra Leon</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">21:50</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Toulouse</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">22:45</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Albi</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">6,00 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Marie</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">4,8</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-red-700">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Toyota Yaris</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">05:20</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Mulhouse</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">06:50</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Strasbourg</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">7,00 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Karl</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">5,0</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-gray-950">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Audi A8</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">08:05</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Jaulnay</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">08:55</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Tours</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">4,00 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Philippe</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">4,3</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-gray-400">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Citroën C3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">07:40</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Auray</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">08:15</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Vannes</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">3,80 €</h3>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par Maïwenn</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">4,7</p>
+                    </div>
+
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-5 h-5 mx-2 text-yellow-400">
+                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                        </svg>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Fiat Punto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="h-20 invisible"></div>
+
+<div class="fixed bottom-0 left-0 z-50 w-full h-20 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+    <div class="grid h-full max-w-xl grid-cols-6 mx-auto font-medium">
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-pink-600 dark:text-pink-500 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+            <span class="text-sm text-pink-600 dark:text-pink-500 group-hover:text-pink-600 dark:group-hover:text-pink-500">Accueil</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Discussions</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Réservations</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Offres</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Musique</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Profil</span>
+        </button>
+    </div>
+</div>
+</body>
+</html>

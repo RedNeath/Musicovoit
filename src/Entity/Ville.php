@@ -25,7 +25,7 @@ class Ville
     /**
      * @ORM\Column(type="string", length=10)
      */
-    private $code_pÃostal;
+    private $code_postal;
 
     public function getId(): ?int
     {
@@ -44,14 +44,14 @@ class Ville
         return $this;
     }
 
-    public function getCodePÃostal(): ?string
+    public function getCodePostal(): ?string
     {
-        return $this->code_pÃostal;
+        return $this->code_postal;
     }
 
-    public function setCodePÃostal(string $code_pÃostal): self
+    public function setCodePostal(string $code_postal): self
     {
-        $this->code_pÃostal = $code_pÃostal;
+        $this->code_postal = $code_postal;
 
         return $this;
     }

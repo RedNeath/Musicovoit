@@ -33,6 +33,12 @@ class Message
      */
     private $trajet;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Utilisateur::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $utilisateur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +76,18 @@ class Message
     public function setTrajet(?Trajet $trajet): self
     {
         $this->trajet = $trajet;
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?Utilisateur $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }

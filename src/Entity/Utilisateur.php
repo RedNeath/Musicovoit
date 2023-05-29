@@ -39,17 +39,17 @@ class Utilisateur
     /**
      * @ORM\OneToMany(targetEntity=Trajet::class, mappedBy="conducteur", orphanRemoval=true)
      */
-    private ArrayCollection $trajets_conduits;
+    private Collection $trajets_conduits;
 
     /**
      * @ORM\ManyToMany(targetEntity=Trajet::class, inversedBy="passagers")
      */
-    private ArrayCollection $voyages;
+    private Collection $voyages;
 
     /**
      * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="utilisateur", orphanRemoval=true)
      */
-    private ArrayCollection $avis;
+    private Collection $avis;
 
     public function __construct()
     {

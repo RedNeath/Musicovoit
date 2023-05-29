@@ -46,7 +46,7 @@ class Trajet
     /**
      * @ORM\ManyToMany(targetEntity=Utilisateur::class, mappedBy="voyages")
      */
-    private ArrayCollection $passagers;
+    private Collection $passagers;
 
     /**
      * @ORM\ManyToOne(targetEntity=Vehicule::class)
@@ -57,12 +57,12 @@ class Trajet
     /**
      * @ORM\OneToMany(targetEntity=Message::class, mappedBy="trajet", orphanRemoval=true)
      */
-    private ArrayCollection $messages;
+    private Collection $messages;
 
     /**
      * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="trajet")
      */
-    private ArrayCollection $avis;
+    private Collection $avis;
 
     /**
      * @ORM\ManyToOne(targetEntity=Ville::class)
@@ -81,7 +81,10 @@ class Trajet
         $this->passagers = new ArrayCollection();
         $this->messages = new ArrayCollection();
         $this->avis = new ArrayCollection();
-        $this->playlist = new ArrayCollection();
+    }
+
+    public function __toString(): string {
+        return "bonjour";
     }
 
     public function getId(): ?int

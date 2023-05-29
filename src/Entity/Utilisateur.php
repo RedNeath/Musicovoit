@@ -17,37 +17,37 @@ class Utilisateur
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private string $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prenom;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Style::class)
-     */
-    private $style_favori;
+    private string $prenom;
 
     /**
      * @ORM\ManyToOne(targetEntity=Vehicule::class, inversedBy="conducteurs")
      */
-    private $vehicule;
+    private Vehicule $vehicule;
 
     /**
      * @ORM\OneToMany(targetEntity=Trajet::class, mappedBy="conducteur", orphanRemoval=true)
      */
-    private $trajets_conduits;
+    private ArrayCollection $trajets_conduits;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="utilisateur", orphanRemoval=true)
+     */
+    private ArrayCollection $avis;
 
     /**
      * @ORM\ManyToMany(targetEntity=Trajet::class, inversedBy="passagers")
      */
-    private $voyages;
+    private ArrayCollection $voyages;
 
     public function __construct()
     {
@@ -80,18 +80,6 @@ class Utilisateur
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function getStyleFavori(): ?Style
-    {
-        return $this->style_favori;
-    }
-
-    public function setStyleFavori(?Style $style_favori): self
-    {
-        $this->style_favori = $style_favori;
 
         return $this;
     }
@@ -132,6 +120,36 @@ class Utilisateur
             // set the owning side to null (unless already changed)
             if ($trajetsConduit->getConducteur() === $this) {
                 $trajetsConduit->setConducteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Avis>
+     */
+    public function getAvis(): Collection
+    {
+        return $this->avis;
+    }
+
+    public function addAvis(Avis $avis): self
+    {
+        if (!$this->avis->contains($avis)) {
+            $this->avis[] = $avis;
+            $avis->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvis(Avis $avis): self
+    {
+        if ($this->avis->removeElement($avis)) {
+            // set the owning side to null (unless already changed)
+            if ($avis->getUtilisateur() === $this) {
+                $avis->setUtilisateur(null);
             }
         }
 

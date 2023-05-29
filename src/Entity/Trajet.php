@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\TrajetRepository;
+use DateInterval;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,66 +20,61 @@ class Trajet
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date;
+    private DateTimeInterface $date;
 
     /**
      * @ORM\Column(type="decimal", precision=5, scale=2)
      */
-    private $prix;
+    private float $prix;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $places;
+    private int $places;
 
     /**
      * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="trajets_conduits")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $conducteur;
+    private Utilisateur $conducteur;
 
     /**
      * @ORM\ManyToMany(targetEntity=Utilisateur::class, mappedBy="voyages")
      */
-    private $passagers;
+    private ArrayCollection $passagers;
 
     /**
      * @ORM\ManyToOne(targetEntity=Vehicule::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $vehicule;
+    private Vehicule $vehicule;
 
     /**
      * @ORM\OneToMany(targetEntity=Message::class, mappedBy="trajet", orphanRemoval=true)
      */
-    private $messages;
+    private ArrayCollection $messages;
 
     /**
      * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="trajet")
      */
-    private $avis;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Morceau::class)
-     */
-    private $playlist;
+    private ArrayCollection $avis;
 
     /**
      * @ORM\ManyToOne(targetEntity=Ville::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $depart;
+    private Ville $depart;
 
     /**
      * @ORM\ManyToOne(targetEntity=Ville::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $arrivee;
+    private Ville $arrivee;
 
     public function __construct()
     {
@@ -91,12 +89,12 @@ class Trajet
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(DateTimeInterface $date): self
     {
         $this->date = $date;
 
@@ -216,48 +214,24 @@ class Trajet
         return $this->avis;
     }
 
-    public function addAvi(Avis $avi): self
+    public function addAvis(Avis $avis): self
     {
-        if (!$this->avis->contains($avi)) {
-            $this->avis[] = $avi;
-            $avi->setTrajet($this);
+        if (!$this->avis->contains($avis)) {
+            $this->avis[] = $avis;
+            $avis->setTrajet($this);
         }
 
         return $this;
     }
 
-    public function removeAvi(Avis $avi): self
+    public function removeAvis(Avis $avis): self
     {
-        if ($this->avis->removeElement($avi)) {
+        if ($this->avis->removeElement($avis)) {
             // set the owning side to null (unless already changed)
-            if ($avi->getTrajet() === $this) {
-                $avi->setTrajet(null);
+            if ($avis->getTrajet() === $this) {
+                $avis->setTrajet(null);
             }
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Morceau>
-     */
-    public function getPlaylist(): Collection
-    {
-        return $this->playlist;
-    }
-
-    public function addPlaylist(Morceau $playlist): self
-    {
-        if (!$this->playlist->contains($playlist)) {
-            $this->playlist[] = $playlist;
-        }
-
-        return $this;
-    }
-
-    public function removePlaylist(Morceau $playlist): self
-    {
-        $this->playlist->removeElement($playlist);
 
         return $this;
     }
@@ -284,5 +258,13 @@ class Trajet
         $this->arrivee = $arrivee;
 
         return $this;
+    }
+
+    public function getHeureDepart(): string {
+        return $this->date->format('G:i');
+    }
+
+    public function getHeureArrivee(): string {
+        return $this->date->add(new DateInterval('P' . rand(10, 150) . 'M'));
     }
 }

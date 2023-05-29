@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>{% block title %}{% endblock %} - Musicovoit</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
@@ -13,7 +15,54 @@
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
-    <body>
+    <body class="bg-gray-100 dark:bg-gray-900">
+        <div class="bg-white border-b dark:bg-gray-700 dark:border-gray-600 py-6">
+            <img class="max-h-16 w-auto ml-auto mr-auto" src="https://media.discordapp.net/attachments/485070483260440581/1108085006984818718/musicovoit_closecropped.png" alt="Logo de Musi'Covoit">
+        </div>
+
         {% block body %}{% endblock %}
+
+        <div class="h-20 invisible"></div>
+
+        <div class="fixed bottom-0 left-0 z-50 w-full h-20 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+            <div class="grid h-full max-w-xl grid-cols-6 mx-auto font-medium">
+                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <svg class="w-8 h-8 mb-1 text-pink-600 dark:text-pink-500 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                    <span class="text-sm text-pink-600 dark:text-pink-500 group-hover:text-pink-600 dark:group-hover:text-pink-500">Accueil</span>
+                </button>
+                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                    </svg>
+                    <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Discussions</span>
+                </button>
+                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                    </svg>
+                    <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Réservations</span>
+                </button>
+                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
+                    </svg>
+                    <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Offres</span>
+                </button>
+                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
+                    </svg>
+                    <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Musique</span>
+                </button>
+                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500">Profil</span>
+                </button>
+            </div>
+        </div>
     </body>
 </html>

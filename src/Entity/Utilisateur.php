@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  */
-class Utilisateur
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id
@@ -51,6 +52,30 @@ class Utilisateur
      */
     private ArrayCollection $avis;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = ['ROLE_USER'];
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
+     */
+    private $password;
+
+    public function eraseCredentials()
+    {
+        
+    }
+    public function getSalt()
+    {
+        
+    }
+    public function getUsername()
+    {
+        return $this->nom; // Remplacez $this->email par la propriété contenant le nom d'utilisateur de l'utilisateur
+    }
+
+
     public function __construct()
     {
         $this->trajets_conduits = new ArrayCollection();
@@ -72,6 +97,28 @@ class Utilisateur
         if ($count > 0)
             $this->rating = $sum / $count;
     }
+
+    public function getRoles(): array
+{
+    return $this->roles;
+}
+
+public function setRoles(array $roles): self
+{
+    $this->roles = $roles;
+    return $this;
+}
+
+public function getPassword(): ?string
+{
+    return $this->password;
+}
+
+public function setPassword(string $password): self
+{
+    $this->password = $password;
+    return $this;
+}
 
     public function getId(): ?int
     {

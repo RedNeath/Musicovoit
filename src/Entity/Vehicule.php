@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\VehiculeRepository;
+use App\Form\VehiculeType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

@@ -92,4 +92,5 @@ class TrajetController extends AbstractController
     public function localeless_index(): Response {
         return $this->render('redirect_to_default_locale.html.twig');
     }
+    
 }

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1 class="mt-16 font-semibold text-4xl text-center text-pink-600">Ne laissez plus votre musique sur le bord de la route.</h1>
+    <h2 class="mt-3 text-xl text-center text-gray-800 dark:text-gray-100">Avec Musi'Covoit, générez une playlist à partir des goûts de chaque personne dans la voiture.</h2>
+
+    <form class="my-6 mx-36" action="#{# {{ path('trajets.search') }} #}">
+        <div class="flex">
+            <div class="w-full flex flex-row flex-nowrap content-center justify-center items-center">
+                <input name="from" type="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-pink-500 rounded-l-lg" placeholder="Départ" required>
+                <input name="to" type="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 border-l-gray-50 border border-gray-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-pink-500" placeholder="Destination" required>
+                <input name="on" type="date" class="block w-full z-20 text-sm text-gray-900 bg-gray-50 border-l-gray-50 border border-gray-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-pink-500" required
+                       style="padding: 9px"
+                >
+                <input name="with" type="number" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 border-l-gray-50 border border-gray-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-pink-500" value="1" required>
+                <button type="submit" class="p-2.5 text-sm font-medium text-white bg-pink-700 rounded-r-lg border border-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-500">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <span class="sr-only">Search</span>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div id="feed" class="mx-36 mb-8">
+        <h2 class="mt-16 font-medium text-2xl text-pink-600">Ces offres pourraient vous intéresser...</h2>
+
+        <div class="mt-4 grid grid-cols-3 gap-4">
+            {% for ad in ads %}
+            <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer">
+                <div class="flex flex-row justify-between">
+                    <ol class="mb-4 relative border-l border-gray-200 dark:border-gray-500">
+                        <li class="mb-4 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-500"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{ ad.getHeureDepart() }}</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ ad.getDepart().getNom() }}</h3>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-500"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{ ad.getHeureArrivee() }}</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ ad.getArrivee().getNom() }}</h3>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ ad.getPrix() }} €</h3>
+                </div>
+
+                <div class="flex flex-row">
+                    <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par {{ ad.getConducteur().getPrenom() }}</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
+                        <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                    </svg>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">{{ ad.getConducteur().get }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

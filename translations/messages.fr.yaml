@@ -3,6 +3,9 @@ warning: "Avertissement !"
 cancel: "Annuler"
 edit: "Éditer"
 delete: "Supprimer"
+result: 'résultat'
+
+date.format: "j F Y"
 
 app.location.home: "Accueil"
 app.location.chat: "Discussions"
@@ -15,5 +18,19 @@ app.subtitle: "Musi'Covoit, le premier réseau de covoiturage passionné par la 
 
 trajet.departure: "Départ"
 trajet.arrival: "Destination"
+trajet.source: "Publié par"
+
+trajet.search.from: "Trajets de"
+trajet.search.to: "à"
+trajet.search.on: "le"
+trajet.search.sorts: "Ordre de tri"
+trajet.search.sort.hour_asc: "Heure croissante (du plus tôt au plus tard)"
+trajet.search.sort.hour_des: "Heure décroissante (du plus tard au plus tôt)"
+trajet.search.sort.price_asc: "Prix croissant (du moins cher au plus cher)"
+trajet.search.sort.price_des: "Prix décroissant (du plus cher au moins cher)"
+trajet.search.sort.length: "Temps de trajet (du plus court au plus long)"
+trajet.search.time: "Horaires du voyage"
+trajet.search.time.go_after: "Partir après"
+trajet.search.time.arrive_before: "Arriver avant"
 
 offers.interest: "Ces offres pourraient vous intéresser..."

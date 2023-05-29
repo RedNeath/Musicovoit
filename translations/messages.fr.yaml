@@ -1,0 +1,19 @@
+save_button_label: "Enregistrer"
+warning: "Avertissement !"
+cancel: "Annuler"
+edit: "Éditer"
+delete: "Supprimer"
+
+app.location.home: "Accueil"
+app.location.chat: "Discussions"
+app.location.bookings: "Réservations"
+app.location.ads: "Offres"
+app.location.self: "Profil"
+
+app.title: "Ne laissez plus votre musique sur le bord de la route."
+app.subtitle: "Musi'Covoit, le premier réseau de covoiturage passionné par la musique."
+
+trajet.departure: "Départ"
+trajet.arrival: "Destination"
+
+offers.interest: "Ces offres pourraient vous intéresser..."

@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}{{ 'app.location.home'|trans }}{% endblock %}
 
 {% block body %}
 
 <div class="example-wrapper">
-    <h1 class="mt-16 font-semibold text-4xl text-center text-pink-600">Ne laissez plus votre musique sur le bord de la route.</h1>
-    <h2 class="mt-3 text-xl text-center text-gray-800 dark:text-gray-100">Avec Musi'Covoit, générez une playlist à partir des goûts de chaque personne dans la voiture.</h2>
+    <h1 class="mt-16 font-semibold text-4xl text-center text-pink-600">{{ 'app.title'|trans }}</h1>
+    <h2 class="mt-3 text-xl text-center text-gray-800 dark:text-gray-100">{{ 'app.subtitle'|trans }}</h2>
 
     <form class="my-6 mx-36" action="#{# {{ path('trajets.search') }} #}">
         <div class="flex">
             <div class="w-full flex flex-row flex-nowrap content-center justify-center items-center">
-                <input name="from" type="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-pink-500 rounded-l-lg" placeholder="Départ" required>
-                <input name="to" type="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 border-l-gray-50 border border-gray-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-pink-500" placeholder="Destination" required>
+                <input name="from" type="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-pink-500 rounded-l-lg" placeholder="{{ 'trajet.departure'|trans }}" required>
+                <input name="to" type="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 border-l-gray-50 border border-gray-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-pink-500" placeholder="{{ 'trajet.arrival'|trans }}" required>
                 <input name="on" type="date" class="block w-full z-20 text-sm text-gray-900 bg-gray-50 border-l-gray-50 border border-gray-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-pink-500" required
                        style="padding: 9px"
                 >
@@ -26,7 +26,7 @@
     </form>
 
     <div id="feed" class="mx-36 mb-8">
-        <h2 class="mt-16 font-medium text-2xl text-pink-600">Ces offres pourraient vous intéresser...</h2>
+        <h2 class="mt-16 font-medium text-2xl text-pink-600">{{ 'offers.interest'|trans }}</h2>
 
         <div class="mt-4 grid grid-cols-3 gap-4">
             {% for ad in ads %}
@@ -50,10 +50,13 @@
 
                 <div class="flex flex-row">
                     <p class="font-normal text-gray-700 dark:text-gray-400 mr-4">Publié par {{ ad.getConducteur().getPrenom() }}</p>
+                    {% set rating = ad.getConducteur().getRating() %}
+                    {% if rating is not null %}
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-700 dark:text-gray-400 mx-2">
                         <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
                     </svg>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">{{ ad.getConducteur().get }}</p>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">{{ rating }}</p>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

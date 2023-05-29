@@ -39,7 +39,7 @@ class Avis
     private $trajet;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Utilisateur::class)
+     * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="avis")
      * @ORM\JoinColumn(nullable=false)
      */
     private $utilisateur;

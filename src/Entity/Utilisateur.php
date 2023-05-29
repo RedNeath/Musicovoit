@@ -19,6 +19,8 @@ class Utilisateur
      */
     private int $id;
 
+    private ?float $rating;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -40,24 +42,44 @@ class Utilisateur
     private ArrayCollection $trajets_conduits;
 
     /**
-     * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="utilisateur", orphanRemoval=true)
-     */
-    private ArrayCollection $avis;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Trajet::class, inversedBy="passagers")
      */
     private ArrayCollection $voyages;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="utilisateur", orphanRemoval=true)
+     */
+    private ArrayCollection $avis;
 
     public function __construct()
     {
         $this->trajets_conduits = new ArrayCollection();
         $this->voyages = new ArrayCollection();
+        $this->avis = new ArrayCollection();
+
+        $sum = 0;
+        $count = 0;
+        // Calcul de la note
+        foreach ($this->trajets_conduits as $trajet) {
+            /* @var $trajet Trajet */
+            foreach ($trajet->getAvis() as $avis) {
+                /* @var $avis Avis */
+                $count++;
+                $sum += $avis->getNote();
+            }
+        }
+
+        if ($count > 0)
+            $this->rating = $sum / $count;
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getRating(): ?float {
+        return $this->rating;
     }
 
     public function getNom(): ?string
@@ -127,36 +149,6 @@ class Utilisateur
     }
 
     /**
-     * @return Collection<int, Avis>
-     */
-    public function getAvis(): Collection
-    {
-        return $this->avis;
-    }
-
-    public function addAvis(Avis $avis): self
-    {
-        if (!$this->avis->contains($avis)) {
-            $this->avis[] = $avis;
-            $avis->setUtilisateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAvis(Avis $avis): self
-    {
-        if ($this->avis->removeElement($avis)) {
-            // set the owning side to null (unless already changed)
-            if ($avis->getUtilisateur() === $this) {
-                $avis->setUtilisateur(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Trajet>
      */
     public function getVoyages(): Collection
@@ -176,6 +168,36 @@ class Utilisateur
     public function removeVoyage(Trajet $voyage): self
     {
         $this->voyages->removeElement($voyage);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Avis>
+     */
+    public function getAvis(): Collection
+    {
+        return $this->avis;
+    }
+
+    public function addAvi(Avis $avi): self
+    {
+        if (!$this->avis->contains($avi)) {
+            $this->avis[] = $avi;
+            $avi->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvi(Avis $avi): self
+    {
+        if ($this->avis->removeElement($avi)) {
+            // set the owning side to null (unless already changed)
+            if ($avi->getUtilisateur() === $this) {
+                $avi->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }

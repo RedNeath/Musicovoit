@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,7 +74,14 @@
         <div class="bg-white border-b dark:bg-gray-700 dark:border-gray-600 py-6 flex flex-row justify-between">
             <img class="max-h-16 w-auto ml-auto mr-auto" src="https://media.discordapp.net/attachments/485070483260440581/1108085006984818718/musicovoit_closecropped.png" alt="Logo de Musi'Covoit">
             <div class="my-auto">
-                <a href="{{ path(app.request.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': nextLocale})) }}" class="mr-0.5 h-10 inline-flex items-center p-2 text-sm text-gray-900 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600" role="button">
+                {% set params = app.request.getRequestUri()|split("?") %}
+                {% set queryParams = "" %}
+                {% if params|length > 1 %}
+                    {% for i in 1..params|length-1 %}
+                        {% set queryParams = queryParams ~ "?" ~ params[i] %}
+                    {% endfor %}
+                {% endif %}
+                <a href="{{ path(app.request.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': nextLocale})) ~ queryParams }}" class="mr-0.5 h-10 inline-flex items-center p-2 text-sm text-gray-900 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600" role="button">
                     <span>
                         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-1.503.204A6.5 6.5 0 117.95 3.83L6.927 5.62a1.453 1.453 0 001.91 2.02l.175-.087a.5.5 0 01.224-.053h.146a.5.5 0 01.447.724l-.028.055a.4.4 0 01-.357.221h-.502a2.26 2.26 0 00-1.88 1.006l-.044.066a2.099 2.099 0 001.085 3.156.58.58 0 01.397.547v1.05a1.175 1.175 0 002.093.734l1.611-2.014c.192-.24.296-.536.296-.842 0-.316.128-.624.353-.85a1.363 1.363 0 00.173-1.716l-.464-.696a.369.369 0 01.527-.499l.343.257c.316.237.738.275 1.091.098a.586.586 0 01.677.11l1.297 1.297z" clip-rule="evenodd" />
@@ -98,33 +105,18 @@
             </div>
         </div>
 
-        <!-- Dropdown menu -->
-        <div id="dropdownDots" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                {% for key,locale in locales %}
-                    <li>
-                        <a href="{{ path(app.request.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': key})) }}"
-                           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                            {{ locale }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-
         {% block body %}{% endblock %}
 
         <div class="h-20 invisible"></div>
 
         <div class="fixed bottom-0 left-0 z-50 w-full h-20 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
             <div class="grid h-full max-w-xl grid-cols-5 mx-auto font-medium">
-                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
-                    <svg class="w-8 h-8 mb-1 text-pink-600 dark:text-pink-500 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <a href="{{ path("app_trajet") }}" role="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <svg class="w-8 h-8 mb-1 {% if path(app.request.get("_route")) == path("app_trajet") %}text-pink-600 dark:text-pink-500{% else %}text-gray-500 dark:text-gray-400{% endif%} group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                     </svg>
-                    <span class="text-sm text-pink-600 dark:text-pink-500 group-hover:text-pink-600 dark:group-hover:text-pink-500">{{ 'app.location.home'|trans }}</span>
-                </button>
+                    <span class="text-sm {% if path(app.request.get("_route")) == path("app_trajet") %}text-pink-600 dark:text-pink-500{% else %}text-gray-500 dark:text-gray-400{% endif%} group-hover:text-pink-600 dark:group-hover:text-pink-500">{{ 'app.location.home'|trans }}</span>
+                </a>
                 <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
                     <svg class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-500" fill="transparent" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />

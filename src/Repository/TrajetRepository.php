@@ -3,9 +3,14 @@
 namespace App\Repository;
 
 use App\Entity\Trajet;
+use App\Entity\Ville;
+use DateInterval;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -75,4 +80,29 @@ class TrajetRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @param string $from
+     * @param string $to
+     * @param DateTime $on
+     * @param int $with
+     * @return Trajet[]
+     */
+    public function search(string $from, string $to, DateTime $on, int $with) : array {
+        $builder = $this->createQueryBuilder('t');
+
+        $builder = $builder
+            ->innerJoin('t.depart', 'vd')
+            ->innerJoin('t.arrivee', 'va')
+            ->where($builder->expr()->like('vd.nom', ':from'))
+            ->andWhere($builder->expr()->like('va.nom', ':to'))
+            ->andWhere($builder->expr()->between('t.date', $on->format('Y-m-d'), $on->modify('+1 day')->format('Y-m-d')))
+            ->andWhere('t.places >= :with')
+            ->setParameter('from', $from)
+            ->setParameter('to', $to)
+            ->setParameter('with', $with)
+            ->orderBy('t.date', 'ASC');
+
+        return $builder->getQuery()->getResult();
+    }
 }

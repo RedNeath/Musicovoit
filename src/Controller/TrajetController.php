@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TrajetController extends AbstractController
-{
+{   
     /**
      * @Route("/{_locale}/", name="app_trajet")
      */

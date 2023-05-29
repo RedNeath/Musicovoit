@@ -62,11 +62,6 @@ class Trajet
     private $avis;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Morceau::class)
-     */
-    private $playlist;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Ville::class)
      * @ORM\JoinColumn(nullable=false)
      */
@@ -234,30 +229,6 @@ class Trajet
                 $avi->setTrajet(null);
             }
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Morceau>
-     */
-    public function getPlaylist(): Collection
-    {
-        return $this->playlist;
-    }
-
-    public function addPlaylist(Morceau $playlist): self
-    {
-        if (!$this->playlist->contains($playlist)) {
-            $this->playlist[] = $playlist;
-        }
-
-        return $this;
-    }
-
-    public function removePlaylist(Morceau $playlist): self
-    {
-        $this->playlist->removeElement($playlist);
 
         return $this;
     }

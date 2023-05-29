@@ -30,11 +30,6 @@ class Utilisateur
     private $prenom;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Style::class)
-     */
-    private $style_favori;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Vehicule::class, inversedBy="conducteurs")
      */
     private $vehicule;
@@ -80,18 +75,6 @@ class Utilisateur
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function getStyleFavori(): ?Style
-    {
-        return $this->style_favori;
-    }
-
-    public function setStyleFavori(?Style $style_favori): self
-    {
-        $this->style_favori = $style_favori;
 
         return $this;
     }
